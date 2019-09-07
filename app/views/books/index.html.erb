@@ -1,4 +1,8 @@
-<p id="notice"></p>
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <h1>Books</h1>
 <table>
   <thead>
@@ -10,7 +14,7 @@
   </thead>
 
   <tbody>
-    <%= @books.each do |book| %>
+    <% @books.each do |book| %>
       <tr>
         <td><%= book.title %></td>
         <td><%= book.body %></td>
@@ -22,6 +26,15 @@
   </tbody>
 </table>
 <h2>New book</h2>
+<% if @book.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <ul>
+  </div>
+<% end %>
 <%= form_for(@book) do |f| %>
   <div class="field">
     <p class="field-title">Title</p>

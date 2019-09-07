@@ -6,3 +6,8 @@ p {
 a {
   font-size: 13px;
 }
+.flash {
+  color: green;
+  font-size: 13px;
+  margin: 33px;
+}
